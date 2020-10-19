@@ -20,10 +20,10 @@ func FromJSON(b []byte) (*API, error) {
 		return nil, ErrUnsupportedElement
 	}
 
-	return fromContainer(c)
+	return fromContainer(c), nil
 }
 
-func fromContainer(c *gabs.Container) (*API, error) {
+func fromContainer(c *gabs.Container) *API {
 	a := new(API)
 
 	for _, child := range c.Path("content").Children() {
@@ -36,7 +36,7 @@ func fromContainer(c *gabs.Container) (*API, error) {
 		}
 	}
 
-	return a, nil
+	return a
 }
 
 func toTitle(c *gabs.Container) string {
