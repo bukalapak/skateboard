@@ -1,8 +1,6 @@
 package element
 
 func compute(a *API) {
-	a.Host = computeHost(a.Metadata)
-
 	for i := range a.ResourceGroups {
 		for j := range a.ResourceGroups[i].Resources {
 			computeResource(a.ResourceGroups[i].Resources[j])
@@ -41,14 +39,4 @@ func computeHref(t Transition, r Resource) Href {
 	}
 
 	return t.Href
-}
-
-func computeHost(meta []Metadata) string {
-	for i := range meta {
-		if meta[i].Key == "HOST" {
-			return meta[i].Value
-		}
-	}
-
-	return ""
 }

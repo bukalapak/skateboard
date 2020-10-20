@@ -35,5 +35,4 @@ func TestFromJSON(t *testing.T) {
 	c.Assert(err, qt.IsNil)
 	c.Assert(el.Title, qt.Equals, "Real World API")
 	c.Assert(el.Description, qt.Contains, "This API Blueprint demonstrates a real world example")
-	c.Assert(el.Host, qt.Equals, "https://alpha-api.app.net")
 }

@@ -3,7 +3,6 @@ package element
 type API struct {
 	Title          string          `json:"title"`
 	Description    string          `json:"description"`
-	Host           string          `json:"host"`
 	Metadata       []Metadata      `json:"metadata"`
 	ResourceGroups []ResourceGroup `json:"resource_groups"`
 	Resources      []Resource      `json:"resources"`
