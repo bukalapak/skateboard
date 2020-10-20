@@ -1,4 +1,4 @@
-DRAFTER_VERSION := 5.0.0_alpha8
+DRAFTER_VERSION := 5.0.0_alpha10
 DRAFTER_PLATFORM := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 DRAFTER_REPOSITORY := https://github.com/subosito/drafter-go
 
