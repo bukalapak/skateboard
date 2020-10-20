@@ -1,7 +1,7 @@
 package element_test
 
 import (
-	"strings"
+	"os"
 	"testing"
 
 	qt "github.com/frankban/quicktest"
@@ -23,12 +23,17 @@ func TestFromJSON(t *testing.T) {
 		Format: drafter.JSON,
 	}
 
-	b, err := dc.Parse(strings.NewReader("# API"), options)
+	f, err := os.Open("./testdata/Real World API.md")
+	c.Assert(err, qt.IsNil)
+	defer f.Close()
+
+	b, err := dc.Parse(f, options)
 	c.Assert(err, qt.IsNil)
 	c.Assert(string(b), qt.Contains, "parseResult")
 
 	el, err := element.FromJSON(b)
-
 	c.Assert(err, qt.IsNil)
-	c.Assert(el.Title, qt.Equals, "API")
+	c.Assert(el.Title, qt.Equals, "Real World API")
+	c.Assert(el.Description, qt.Contains, "This API Blueprint demonstrates a real world example")
+	c.Assert(el.Host, qt.Equals, "https://alpha-api.app.net")
 }
