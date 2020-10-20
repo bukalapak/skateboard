@@ -33,6 +33,8 @@ func fromContainer(c *gabs.Container) *API {
 			a.Metadata = toMetadata(child)
 			a.ResourceGroups = toResourceGroups(child)
 			a.Resources = toResources(child)
+
+			compute(a)
 		}
 	}
 

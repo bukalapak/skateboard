@@ -3,6 +3,7 @@ package element
 type API struct {
 	Title          string          `json:"title"`
 	Description    string          `json:"description"`
+	Host           string          `json:"host"`
 	Metadata       []Metadata      `json:"metadata"`
 	ResourceGroups []ResourceGroup `json:"resource_groups"`
 	Resources      []Resource      `json:"resources"`
@@ -42,6 +43,7 @@ type HrefVariable struct {
 type Transition struct {
 	Title        string        `json:"title"`
 	Description  string        `json:"description"`
+	Method       string        `json:"method"`
 	Href         Href          `json:"href"`
 	Transactions []Transaction `json:"transactions"`
 }
