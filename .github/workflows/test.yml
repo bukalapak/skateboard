@@ -27,7 +27,7 @@ jobs:
     container:
       image: golang:1.15.2-alpine
     steps:
-      - run: apk add --update git wget make
+      - run: apk add --update build-base git wget
       - uses: actions/checkout@v2
       - run: make drafter
       - run: echo "${PWD}/bin" >> $GITHUB_PATH
