@@ -6,14 +6,14 @@ import (
 
 	qt "github.com/frankban/quicktest"
 	"github.com/subosito/drafter-go"
-	rc "github.com/subosito/drafter-go/rpc-client"
+	rc "github.com/subosito/drafter-go/rpc-plugin/client"
 	"github.com/subosito/skateboard/element"
 )
 
 func TestFromJSON(t *testing.T) {
 	c := qt.New(t)
 
-	client := rc.New()
+	client := rc.New(rc.Config{Name: "skateboard-rpc"})
 	defer client.Close()
 
 	dc, err := client.Dispense()
