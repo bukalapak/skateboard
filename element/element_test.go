@@ -5,9 +5,9 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/subosito/drafter-go"
-	rc "github.com/subosito/drafter-go/rpc-plugin/client"
-	"github.com/subosito/skateboard/element"
+	"github.com/bukalapak/drafter-go"
+	rc "github.com/bukalapak/drafter-go/rpc-plugin/client"
+	"github.com/bukalapak/skateboard/element"
 )
 
 func TestFromJSON(t *testing.T) {
