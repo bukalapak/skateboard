@@ -19,7 +19,7 @@ jobs:
           go-version: '1.15.2'
       - uses: actions/setup-python@v2
         with:
-          python-version: '1.15.2'
+          python-version: '2.x'
       - run: make drafter
       - run: echo "${PWD}/bin" >> $GITHUB_PATH
       - run: go mod download
