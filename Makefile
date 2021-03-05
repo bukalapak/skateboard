@@ -1,6 +1,6 @@
-DRAFTER_VERSION    ?= 5.0.0_rc1
+DRAFTER_VERSION    ?= 5.0.0
 DRAFTER_PLATFORM   ?= $(shell uname -s | tr '[:upper:]' '[:lower:]')
-DRAFTER_REPOSITORY ?= https://github.com/subosito/drafter-go
+DRAFTER_REPOSITORY ?= https://github.com/bukalapak/drafter-go
 
 drafter:
 	@mkdir -p bin
