@@ -35,4 +35,23 @@ func TestFromJSON(t *testing.T) {
 	c.Assert(err, qt.IsNil)
 	c.Assert(el.Title, qt.Equals, "Real World API")
 	c.Assert(el.Description, qt.Contains, "This API Blueprint demonstrates a real world example")
+
+	f2, err := os.Open("./testdata/Parameters.md")
+	c.Assert(err, qt.IsNil)
+	defer f.Close()
+
+	b2, err := dc.Parse(f2, options)
+	c.Assert(err, qt.IsNil)
+	c.Assert(string(b2), qt.Contains, "parseResult")
+
+	el2, err := element.FromJSON(b2)
+	c.Assert(err, qt.IsNil)
+	c.Assert(el2.Title, qt.Equals, "Parameters API")
+
+	hv := el2.ResourceGroups[0].Resources[1].Transitions[0].Href.Variables[0]
+	c.Assert(hv.Required, qt.IsFalse)
+	c.Assert(hv.Key, qt.Equals, "limit")
+	c.Assert(hv.Title, qt.Equals, "number")
+	c.Assert(hv.Value, qt.Equals, "20")
+	c.Assert(hv.Description, qt.Equals, "The maximum number of results to return.")
 }
