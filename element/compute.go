@@ -20,7 +20,10 @@ func computeResource(resource Resource) {
 
 func computeTransition(transition *Transition, r Resource) {
 	transition.Method = computeMethod(*transition)
-	transition.Href = computeHref(*transition, r)
+
+	if transition.Href.Path == "" {
+		transition.Href.Path = r.Href.Path
+	}
 }
 
 func computeMethod(t Transition) string {
@@ -31,12 +34,4 @@ func computeMethod(t Transition) string {
 	}
 
 	return ""
-}
-
-func computeHref(t Transition, r Resource) Href {
-	if t.Href.Path == "" {
-		return r.Href
-	}
-
-	return t.Href
 }

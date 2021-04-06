@@ -52,6 +52,10 @@ func toDescription(c *gabs.Container) string {
 		ss = append(ss, toString(child.Path("content")))
 	}
 
+	if mc := toString(c.Path("meta.description.content")); mc != "" {
+		ss = append(ss, mc)
+	}
+
 	return strings.Join(ss, "\n")
 }
 
@@ -197,12 +201,18 @@ func toHrefVariables(c *gabs.Container) []HrefVariable {
 	items := make([]HrefVariable, len(children))
 
 	for i, child := range children {
+		val := toString(child.Path("content.value.content"))
+
+		if val == "" {
+			val = toString(child.Path("content.value.attributes.default.content"))
+		}
+
 		items[i] = HrefVariable{
 			Title:       toTitle(child),
 			Description: toDescription(child),
 			Required:    isRequired(child),
 			Key:         toString(child.Path("content.key.content")),
-			Value:       toString(child.Path("content.value.content")),
+			Value:       val,
 		}
 	}
 
